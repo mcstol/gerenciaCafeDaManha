@@ -2,13 +2,12 @@ package br.com.mv.cafeDaManha.controller;
 
 
 import br.com.mv.cafeDaManha.model.CafeDaManha;
+import br.com.mv.cafeDaManha.model.CafeDaManhaTeste;
 import br.com.mv.cafeDaManha.service.CafeDaManhaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
@@ -22,8 +21,26 @@ public class CafeDaManhaController {
 
     @GetMapping
     public ResponseEntity<Iterable<CafeDaManha>> get() {
-//       Iterable<CafeDaManha> listaCafes = cafeDaManhaService.listaCafes();
 
         return new ResponseEntity(cafeDaManhaService.listaCafes(), HttpStatus.OK);
     }
+
+    @PostMapping
+    public ResponseEntity<CafeDaManha> create(@RequestBody CafeDaManha cafeDaManha){
+        cafeDaManhaService.salvaCafe(cafeDaManha);
+        return new ResponseEntity(HttpStatus.CREATED);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Iterable<CafeDaManha>> getCafe(@PathVariable(value = "id") int id ) {
+
+        return new ResponseEntity(cafeDaManhaService.listaCafe(id), HttpStatus.OK);
+    }
+
+    @PostMapping("/teste")
+    public ResponseEntity<CafeDaManhaTeste> create(@RequestBody CafeDaManhaTeste cafeDaManhaTeste){
+        cafeDaManhaService.salvaCafeteste(cafeDaManhaTeste);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
 }

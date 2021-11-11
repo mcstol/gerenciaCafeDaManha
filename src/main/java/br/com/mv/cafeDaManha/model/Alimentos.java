@@ -1,19 +1,18 @@
 package br.com.mv.cafeDaManha.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
 
-@Entity(name = "cafeDaManha")
-@Table(name = "cafeDaManha")
+@Entity(name = "alimento")
+@Table(name = "alimento")
 @Data
 @NoArgsConstructor
-public class CafeDaManha {
+public class Alimentos {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Date date;
+    private String[]alimentos = new String[10];
 }

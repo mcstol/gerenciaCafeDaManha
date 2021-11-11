@@ -1,6 +1,5 @@
 package br.com.mv.cafeDaManha.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,9 +10,11 @@ import java.util.Date;
 @Table(name = "cafeDaManha")
 @Data
 @NoArgsConstructor
-public class CafeDaManha {
+public class CafeDaManhaTeste {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Date date;
+    private String[]alimentos = new String[10];
 }
